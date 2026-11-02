@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07131f">
+  <title>Mesa Redonda 2 · Proyecto de Título</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#s1" aria-label="Ir a portada"><span class="brand-mark">↗</span><span>PROYECTO DE TÍTULO <small>· MESA REDONDA 02</small></span></a>
+    <div class="top-meta"><span class="live-dot"></span><span>DEFENSA INTERACTIVA</span><span class="top-divider"></span><span id="clock">02 NOV 2026</span></div>
+    <button class="icon-btn" id="overviewBtn" title="Ver índice" aria-label="Ver índice">☷</button>
+  </header>
+  <main id="deck" aria-live="polite">
+    <section class="slide active" id="s1" data-title="Portada">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> PUCV · ESCUELA DE INGENIERÍA ELÉCTRICA</p>
+          <div class="hero-tag">MESA REDONDA <b>02</b></div>
+          <h1>Implementación de<br><em>maqueta física</em> y<br>telemetría en<br>entornos de invernadero</h1>
+          <p class="hero-sub">Sistema ciberfísico autónomo para monitoreo IoT y análisis EdgeAI.</p>
+          <div class="hero-rule"></div>
+          <div class="people-grid">
+            <div><small>MEMORISTA</small><strong>Sergio Ruiz</strong></div>
+            <div><small>PROFESOR GUÍA</small><strong>Dr. Daniel Yunge</strong></div>
+            <div><small>CORREFERENTE</small><strong>Dra. Patricia Peñaloza</strong></div>
+          </div>
+          <div class="hero-foot"><span>02 NOVIEMBRE 2026</span><span>VALPARAÍSO · CHILE</span></div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-orbit orbit-1"></div><div class="visual-orbit orbit-2"></div>
+          <div class="greenhouse-art">
+            <div class="gh-roof"></div><div class="gh-frame"></div>
+            <div class="gh-rail"></div><div class="gh-carriage"><span></span></div>
+            <div class="gh-plant p1">✦</div><div class="gh-plant p2">✦</div><div class="gh-plant p3">✦</div>
+            <div class="gh-sensor"><i></i></div><div class="gh-camera">◉</div>
+          </div>
+          <div class="floating-note note-top"><span class="note-pulse"></span> EDGE DEVICE <b>RPi 4</b></div>
+          <div class="floating-note note-bottom"><span>01</span> SENSOR NETWORK <b>I²C / RS485</b></div>
+          <div class="visual-caption">ARQUITECTURA CIBERFÍSICA <span>●</span> TELEMETRÍA</div>
+        </div>
+      </div>
+      <aside class="speaker"><b>APERTURA</b><p>Buenos días, profesor guía, profesora correferente y asistentes. Hoy presento los avances correspondientes a la Mesa Redonda 2 de mi proyecto de título: la implementación de la maqueta física y telemetría en entornos de invernadero.</p></aside>
+    </section>
+
+    <section class="slide" id="s2" data-title="Objetivos y planificación">
+      <div class="slide-head"><p class="eyebrow">01 / DIRECCIÓN DEL PROYECTO</p><h2>Un objetivo general.<br><em>Tres etapas de desarrollo.</em></h2><p class="lead">El foco de esta mesa redonda es el paso desde la validación de software hacia la integración física.</p></div>
+      <div class="objective-main"><span>OBJETIVO GENERAL</span><p>Desarrollar un <b>sistema ciberfísico autónomo</b> de monitoreo IoT y análisis EdgeAI para entornos de invernadero.</p></div>
+      <div class="roadmap" id="roadmap">
+        <button class="road-step done selected" data-step="0"><span>OE1</span><b>Software simulado</b><small>Arquitectura y lógica</small><i>COMPLETADO / BASE</i></button>
+        <button class="road-step focus" data-step="1"><span>OE2</span><b>Hardware físico y sensores</b><small>Maqueta, buses y persistencia</small><i>FOCO ACTUAL</i></button>
+        <button class="road-step future" data-step="2"><span>OE3</span><b>EdgeAI · YOLOv8n</b><small>Visión e inferencia local</small><i>SIGUIENTE FASE</i></button>
+      </div>
+      <div class="detail-panel" id="roadDetail"><span class="panel-kicker">OE2 · FOCO ACTUAL</span><p>Implementación física de la maqueta, etapa de potencia, sensórica mediante buses I²C y RS485, y persistencia local.</p></div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Recordemos el objetivo general: desarrollar un sistema ciberfísico autónomo de monitoreo IoT y análisis EdgeAI. Hoy nos concentramos en el OE2, que abarca la implementación física de la maqueta, la etapa de potencia, la sensórica por buses I2C y RS485, y la persistencia local.</p></aside>
+    </section>
+
+    <section class="slide" id="s3" data-title="Recapitulación MR1">
+      <div class="slide-head"><p class="eyebrow">02 / CONTINUIDAD DEL DESARROLLO</p><h2>De la validación lógica<br><em>al sistema físico.</em></h2><p class="lead">La MR1 dejó tres decisiones técnicas que condicionan la implementación actual.</p></div>
+      <div class="recap-layout">
+        <div class="recap-list">
+          <button class="recap-item selected" data-recap="async"><span>01</span><b>Concurrencia con AsyncIO</b><small>Adquisición y tareas no bloqueantes</small></button>
+          <button class="recap-item" data-recap="ram"><span>02</span><b>Protección de la SD</b><small>Buffer temporal en memoria tmpfs</small></button>
+          <button class="recap-item" data-recap="pivot"><span>03</span><b>Pivote de arquitectura</b><small>Hardware real, sin automatizaciones intermedias</small></button>
+        </div>
+        <div class="recap-stage" id="recapStage">
+          <div class="stage-icon">⌁</div><div class="stage-label">DECISIÓN VALIDADA</div><h3>AsyncIO</h3><p>La ejecución asíncrona permite coordinar tareas de adquisición y procesamiento sin bloquear el ciclo principal.</p><div class="stage-code">asyncio.gather(lectura_i2c(), lectura_rs485())</div>
+        </div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>En la MR1 validamos la arquitectura asíncrona en Python y el uso de memoria RAM (tmpfs) para proteger la tarjeta SD antes de volcar a SQLite. El gran pivote para esta etapa fue pasar del entorno simulado al ensamble físico directo en terreno.</p></aside>
+    </section>
+
+    <section class="slide" id="s4" data-title="Entorno de invernadero">
+      <div class="slide-head"><p class="eyebrow">03 / REQUERIMIENTOS DE TERRENO</p><h2>El invernadero es un entorno<br><em>electrónicamente exigente.</em></h2><p class="lead">Selecciona cada condición para revisar su impacto y la respuesta de diseño considerada.</p></div>
+      <div class="environment">
+        <div class="env-scene"><div class="env-sun">☼</div><div class="env-humidity">〰 〰 〰</div><div class="env-structure"><div class="env-beam"></div><div class="env-drop">⌄</div><div class="env-box">IP67</div><div class="env-ups">UPS</div><div class="env-leaf">♣</div></div><div class="env-floor"></div></div>
+        <div class="env-controls">
+          <button class="env-card selected" data-env="humidity"><span>01</span><b>Humedad condensada</b><small>Condensación y salpicaduras</small></button>
+          <button class="env-card" data-env="uv"><span>02</span><b>Radiación UV</b><small>Exposición prolongada</small></button>
+          <button class="env-card" data-env="power"><span>03</span><b>Continuidad eléctrica</b><small>Cortes en zonas rurales</small></button>
+          <div class="detail-panel" id="envDetail"><span class="panel-kicker">CONDICIÓN AMBIENTAL</span><p>La humedad puede producir condensación sobre placas y conectores. Se considera encapsulado con protección IP67 y cuidado de conexiones.</p></div>
+        </div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Implementar electrónica en invernaderos exige resistir humedad condensada y radiación UV. Asimismo, las zonas rurales sufren cortes eléctricos, por lo que integrar respaldo UPS es vital para no corromper la base de datos.</p></aside>
+    </section>
+
+    <section class="slide" id="s5" data-title="Estado del arte">
+      <div class="slide-head"><p class="eyebrow">04 / FUNDAMENTO METODOLÓGICO</p><h2>Del conjunto de imágenes<br><em>a un modelo evaluable.</em></h2><p class="lead">Explora el flujo metodológico de análisis foliar que respalda la siguiente fase.</p></div>
+      <div class="pipeline" id="pipeline">
+        <button class="pipe-node selected" data-pipe="0"><span>01</span><b>Benchmarking</b><small>Revisión de enfoques</small></button><div class="pipe-arrow">→</div>
+        <button class="pipe-node" data-pipe="1"><span>02</span><b>Diseño de modelos</b><small>Selección de arquitectura</small></button><div class="pipe-arrow">→</div>
+        <button class="pipe-node" data-pipe="2"><span>03</span><b>Balanceo</b><small>Distribución de clases</small></button><div class="pipe-arrow">→</div>
+        <button class="pipe-node" data-pipe="3"><span>04</span><b>Aumento</b><small>Variabilidad de datos</small></button><div class="pipe-arrow">→</div>
+        <button class="pipe-node" data-pipe="4"><span>05</span><b>Transfer learning</b><small>Ajuste del modelo</small></button>
+      </div>
+      <div class="pipeline-detail" id="pipeDetail"><div class="pipe-number">01</div><div><span class="panel-kicker">ETAPA METODOLÓGICA</span><h3>Benchmarking</h3><p>Comparar enfoques y antecedentes para fundamentar la selección del modelo y las métricas de evaluación.</p></div><div class="pipe-progress"><span style="width:20%"></span></div></div>
+      <div class="note-strip"><span>IMPORTANTE</span> El flujo representa la metodología prevista; no implica que todas las etapas de entrenamiento estén finalizadas en esta mesa redonda.</div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>El estado del arte respalda la metodología de clasificación y análisis foliar que implementaremos en la siguiente fase, utilizando técnicas de transferencia de aprendizaje y balanceo de datos.</p></aside>
+    </section>
+
+    <section class="slide" id="s6" data-title="Tareas desarrolladas">
+      <div class="slide-head"><p class="eyebrow">05 / AVANCE DEL OE2</p><h2>Cuatro frentes de trabajo.<br><em>Una integración funcional.</em></h2><p class="lead">Abre cada hito para visualizar qué aporta al sistema completo.</p></div>
+      <div class="milestones">
+        <button class="milestone selected" data-milestone="0"><span>01</span><div class="mile-icon">⌘</div><b>Selección e integración</b><small>Hardware industrial y sensórica</small><i>↗</i></button>
+        <button class="milestone" data-milestone="1"><span>02</span><div class="mile-icon">▤</div><b>Modelo de datos</b><small>SQLite + Supabase</small><i>↗</i></button>
+        <button class="milestone" data-milestone="2"><span>03</span><div class="mile-icon">⌗</div><b>Montaje mecánico</b><small>Estructura de aluminio</small><i>↗</i></button>
+        <button class="milestone" data-milestone="3"><span>04</span><div class="mile-icon">⌁</div><b>Telemetría</b><small>Adquisición concurrente</small><i>↗</i></button>
+      </div>
+      <div class="milestone-detail" id="milestoneDetail"><span class="panel-kicker">HITO 01 · INTEGRACIÓN</span><h3>Selección e integración de hardware</h3><p>Definición de los dispositivos de medición y sus interfaces de comunicación para la estación ciberfísica.</p><div class="tags"><span>PAR · RS485</span><span>AM2315C · I²C</span><span>Raspberry Pi 4</span></div></div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Para alcanzar el OE2 desarrollamos cuatro tareas clave: seleccionamos el hardware industrial, modelamos el almacenamiento en Supabase y SQLite, construimos el soporte mecánico en aluminio y pusimos en marcha la telemetría concurrente.</p></aside>
+    </section>
+
+    <section class="slide" id="s7" data-title="Componentes y sensores">
+      <div class="slide-head"><p class="eyebrow">06 / CAPA DE ADQUISICIÓN</p><h2>Dos sensores.<br><em>Dos interfaces complementarias.</em></h2><p class="lead">Selecciona un dispositivo para inspeccionar sus variables, alimentación y comunicación.</p></div>
+      <div class="sensor-lab">
+        <div class="sensor-selector"><button class="sensor-choice selected" data-sensor="par"><span class="sensor-symbol">☼</span><b>Sonda cuántica PAR</b><small>Radiación fotosintética</small><em>RS485 · MODBUS RTU</em></button><button class="sensor-choice" data-sensor="am"><span class="sensor-symbol">◉</span><b>AM2315C</b><small>Temperatura y humedad</small><em>I²C · 3.3 V</em></button></div>
+        <div class="sensor-spec" id="sensorSpec"><div class="sensor-topline"><span>DISPOSITIVO 01</span><span class="spec-status">SELECCIONADO</span></div><div class="sensor-big">PAR</div><h3>Sonda cuántica</h3><p>Cuantifica la radiación fotosintéticamente activa en el rango espectral indicado.</p><div class="spec-grid"><div><small>ESPECTRO</small><b>400–700 nm</b></div><div><small>PROTOCOLO</small><b>Modbus RTU</b></div><div><small>INTERFAZ</small><b>RS485</b></div><div><small>ALIMENTACIÓN</small><b>12 V DC</b></div><div><small>PROTECCIÓN</small><b>IP67</b></div></div><div class="signal-path"><span>SONDA PAR</span><i>→</i><span>USB / RS485</span><i>→</i><span>Raspberry Pi</span></div></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Seleccionamos la Sonda Cuántica PAR con protocolo Modbus sobre RS485 y alimentación aislada de 12V para medir la radiación fotosintética, junto al sensor AM2315C por I2C para temperatura y humedad relativa.</p></aside>
+    </section>
+
+    <section class="slide" id="s8" data-title="Esquema eléctrico">
+      <div class="slide-head"><p class="eyebrow">07 / INTERCONEXIÓN ELÉCTRICA</p><h2>La topología eléctrica<br><em>separa lógica y potencia.</em></h2><p class="lead">Pulsa cada bloque para seguir las conexiones de alimentación y comunicación.</p></div>
+      <div class="wiring-board">
+        <svg class="wires" viewBox="0 0 900 430" preserveAspectRatio="none"><path d="M450 210 L210 210 L210 105" class="wire data"/><path d="M450 210 L690 210 L690 105" class="wire data"/><path d="M690 145 L690 320" class="wire power"/><path d="M210 145 L210 320" class="wire power"/><path d="M450 250 L450 350" class="wire data"/></svg>
+        <button class="wiring-node pi selected" data-wire="pi"><span>EDGE COMPUTER</span><b>Raspberry Pi 4</b><small>GPIO · USB · 3.3 V</small></button>
+        <button class="wiring-node am" data-wire="am"><span>BUS I²C</span><b>AM2315C</b><small>SDA / SCL · 3.3 V</small></button>
+        <button class="wiring-node rs" data-wire="rs"><span>CONVERSIÓN</span><b>USB ↔ RS485</b><small>Interfaz diferencial</small></button>
+        <button class="wiring-node par" data-wire="par"><span>MEDICIÓN PAR</span><b>Sonda PAR</b><small>Modbus RTU · A/B</small></button>
+        <button class="wiring-node psu" data-wire="psu"><span>ALIMENTACIÓN</span><b>Fuente 12 V DC</b><small>Rama independiente</small></button>
+        <div class="wiring-detail" id="wiringDetail"><b>Raspberry Pi 4</b><p>Nodo central de adquisición: recibe las lecturas I²C por sus pines dedicados y la trama Modbus a través del conversor USB–RS485.</p></div>
+      </div>
+      <div class="legend"><span><i class="legend-data"></i> Comunicación / datos</span><span><i class="legend-power"></i> Alimentación</span></div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Este diagrama ilustra las conexiones eléctricas: la Raspberry Pi 4 alimentando el sensor I2C en los pines dedicados, y el conversor USB a RS485 interconectando la sonda PAR alimentada por una fuente de 12V DC independiente.</p></aside>
+    </section>
+
+    <section class="slide" id="s9" data-title="Estación ciberfísica">
+      <div class="slide-head"><p class="eyebrow">08 / CONCEPTO MECÁNICO</p><h2>Una estación suspendida<br><em>sobre el área de cultivo.</em></h2><p class="lead">Explora el concepto del riel y cómo se relaciona con el espacio de trabajo del invernadero.</p></div>
+      <div class="rail-explorer">
+        <div class="rail-scene"><div class="roof-lines"></div><div class="suspended-rail"><div class="rail-carriage" id="railCarriage"><span>◉</span></div></div><div class="hanging-line"></div><div class="crop-row"><i>♣</i><i>♣</i><i>♣</i><i>♣</i><i>♣</i></div><div class="floor-line"></div><span class="scene-label label-rail">RIEL DE ALUMINIO</span><span class="scene-label label-crop">DOSel DE CULTIVO</span><span class="scene-label label-clear">PASILLO DESPEJADO</span></div>
+        <div class="rail-controls"><label for="railPosition">DESPLAZAMIENTO DE LA ESTACIÓN</label><input id="railPosition" type="range" min="8" max="88" value="48"><div class="range-labels"><span>INICIO</span><span id="railPercent">48%</span><span>FINAL</span></div><div class="detail-panel"><span class="panel-kicker">VENTAJA DEL DISEÑO</span><p>El riel suspendido libera el suelo de cultivo y reduce obstáculos en los pasillos, permitiendo desplazar la estación a lo largo de la estructura.</p></div></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Aquí observamos el concepto visual del montaje: un riel de aluminio ranurado suspendido de las cerchas del invernadero, liberando por completo el suelo de cultivo y evitando obstáculos en los pasillos.</p></aside>
+    </section>
+
+    <section class="slide" id="s10" data-title="Cámara y perfiles">
+      <div class="slide-head"><p class="eyebrow">09 / DISEÑO DE LA ESTACIÓN MÓVIL</p><h2>Geometría controlada.<br><em>Captura repetible.</em></h2><p class="lead">Activa las capas de diseño para comprender cómo se construye el módulo de visión.</p></div>
+      <div class="camera-layout">
+        <div class="camera-visual"><div class="cam-profile top"></div><div class="cam-profile left"></div><div class="cam-profile right"></div><div class="cam-carriage"><div class="cam-body"><div class="cam-lens">◉</div><div class="cam-led">▦</div></div><div class="cam-mount"></div></div><div class="cam-beam"></div><div class="canopy">♣　♣　♣　♣　♣</div><div class="cam-callout callout-a">PERFILES RANURADOS</div><div class="cam-callout callout-b">CÁMARA + LED</div><div class="cam-callout callout-c">PLANO DE CAPTURA</div></div>
+        <div class="camera-controls"><button class="layer-toggle active" data-layer="profiles"><span>01</span><b>Estructura de aluminio</b><i>ON</i></button><button class="layer-toggle active" data-layer="camera"><span>02</span><b>Cámara móvil</b><i>ON</i></button><button class="layer-toggle active" data-layer="light"><span>03</span><b>Iluminación LED</b><i>ON</i></button><button class="layer-toggle active" data-layer="plane"><span>04</span><b>Plano de captura</b><i>ON</i></button><div class="detail-panel"><span class="panel-kicker">CRITERIO DE DISEÑO</span><p>La estructura busca limitar oscilaciones y mantener una geometría de captura estable respecto al dosel vegetal.</p></div></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>El uso de perfiles de aluminio ranurado evita oscilaciones mecánicas. La cámara móvil con iluminación LED integrada mantiene un ángulo fijo respecto al dosel, garantizando una inferencia con YOLOv8n consistente y sin reflejos plásticos.</p></aside>
+    </section>
+
+    <section class="slide" id="s11" data-title="Base de datos y sincronización">
+      <div class="slide-head"><p class="eyebrow">10 / FLUJO DE TELEMETRÍA</p><h2>Del sensor al dashboard.<br><em>Un recorrido observable.</em></h2><p class="lead">Avanza por cada etapa para ver qué ocurre con una lectura desde su adquisición hasta la visualización.</p></div>
+      <div class="data-flow">
+        <div class="flow-steps">
+          <button class="flow-step selected" data-flow="0"><span>01</span><b>Sensores</b><small>I²C / RS485</small></button><div class="flow-connector"></div>
+          <button class="flow-step" data-flow="1"><span>02</span><b>Raspberry Pi</b><small>AsyncIO · Python</small></button><div class="flow-connector"></div>
+          <button class="flow-step" data-flow="2"><span>03</span><b>SQLite WAL</b><small>Persistencia local</small></button><div class="flow-connector"></div>
+          <button class="flow-step" data-flow="3"><span>04</span><b>Supabase</b><small>API · PostgreSQL</small></button><div class="flow-connector"></div>
+          <button class="flow-step" data-flow="4"><span>05</span><b>Dashboard</b><small>Streamlit</small></button>
+        </div>
+        <div class="flow-workspace">
+          <div class="flow-explain" id="flowExplain"><span class="panel-kicker">ETAPA 01 / ORIGEN</span><h3>Lectura de variables</h3><p>La sonda PAR y el AM2315C entregan mediciones mediante Modbus RTU sobre RS485 e I²C, respectivamente.</p><div class="data-payload"><span>PAYLOAD DE EJEMPLO</span><code>{ "temp": 24.6, "rh": 68, "par": 412 }</code></div></div>
+          <div class="flow-visual" id="flowVisual"><div class="device-chip">◉<small>PAR</small></div><div class="device-chip">◌<small>AM2315C</small></div><div class="visual-arrow">→</div><div class="device-chip active-chip">⌁<small>DATOS</small></div></div>
+        </div>
+        <div class="flow-actions"><button class="secondary-btn" id="flowPrev">← Anterior</button><span id="flowCount">ETAPA 01 DE 05</span><button class="primary-btn" id="flowNext">Siguiente etapa →</button></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>A nivel de software, operamos con una base local SQLite en modo WAL para registros rápidos de temperatura, humedad, PAR y VPD, la cual se sincroniza de forma asíncrona hacia el backend en la nube con Supabase.</p></aside>
+    </section>
+
+    <section class="slide" id="s12" data-title="Respaldo energético">
+      <div class="slide-head"><p class="eyebrow">11 / CONTINUIDAD OPERACIONAL</p><h2>La energía también forma<br><em>parte de la arquitectura.</em></h2><p class="lead">Simula una interrupción de red eléctrica y observa el rol de la UPS en la continuidad del sistema.</p></div>
+      <div class="ups-lab">
+        <div class="power-diagram"><div class="power-source" id="mains"><span>ϟ</span><b>RED AC</b><small>Alimentación principal</small></div><div class="power-line"><i id="powerFlow"></i></div><div class="ups-unit"><span>▣</span><b>UPS STARWATT</b><small>Respaldo energético</small><div class="battery"><i id="batteryFill"></i></div><small id="batteryLabel">BATERÍA 100%</small></div><div class="power-line"><i id="powerOut"></i></div><div class="load-stack"><div>Raspberry Pi 4</div><div>Sensores</div><div>Almacenamiento</div></div></div>
+        <div class="ups-console"><div class="console-head"><span>SIMULADOR DE EVENTO</span><span id="upsStatus" class="status-ok">● RED DISPONIBLE</span></div><div class="console-screen" id="upsLog"><p><i>23:01:02</i> Sistema alimentado desde red AC.</p><p><i>23:01:03</i> UPS en modo espera.</p><p><i>23:01:04</i> Persistencia SQLite operativa.</p></div><button class="primary-btn" id="outageBtn">Simular corte eléctrico</button><button class="secondary-btn" id="restoreBtn">Restaurar red AC</button></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>La unidad de respaldo UPS StarWatt protege al sistema ante cortes imprevistos, evitando transacciones incompletas y la consiguiente corrupción de archivos en SQLite.</p></aside>
+    </section>
+
+    <section class="slide" id="s13" data-title="Derivación de VPD">
+      <div class="slide-head"><p class="eyebrow">12 / VARIABLE AGRONÓMICA DERIVADA</p><h2>La humedad relativa no basta.<br><em>Interpretamos el VPD.</em></h2><p class="lead">Modifica temperatura y humedad relativa para observar cómo cambia el déficit de presión de vapor.</p></div>
+      <div class="vpd-lab">
+        <div class="vpd-controls"><div class="control-row"><label for="tempRange">TEMPERATURA</label><b><span id="tempValue">24</span> °C</b></div><input id="tempRange" type="range" min="10" max="40" value="24"><div class="control-row"><label for="rhRange">HUMEDAD RELATIVA</label><b><span id="rhValue">65</span> %</b></div><input id="rhRange" type="range" min="20" max="100" value="65"><div class="formula">VPD = e<sub>s</sub>(T) × (1 − HR/100)</div><small>Presión de vapor de saturación estimada mediante fórmula de Tetens.</small></div>
+        <div class="vpd-result"><div class="gauge" id="vpdGauge"><div class="gauge-inner"><small>VPD CALCULADO</small><strong id="vpdValue">1.04</strong><span>kPa</span></div></div><div class="vpd-state" id="vpdState">ZONA OBJETIVO</div><div class="vpd-scale"><span>BAJO</span><span>ÓPTIMO 0.8–1.2</span><span>ALTO</span></div><p id="vpdAdvice">Condición dentro del rango de referencia indicado para pimentón.</p></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>A partir de la temperatura y humedad medidos, calculamos en tiempo real el Déficit de Presión de Vapor (VPD). Mantenemos el rango agronómico óptimo para pimentón entre 0.8 y 1.2 kPa, previniendo patógenos por exceso de humedad o estrés hídrico por sequedad.</p></aside>
+    </section>
+
+    <section class="slide" id="s14" data-title="Marco teórico">
+      <div class="slide-head"><p class="eyebrow">13 / CONCEPTOS QUE ARTICULAN EL SISTEMA</p><h2>Cuatro conceptos.<br><em>Una arquitectura integrada.</em></h2><p class="lead">Explora las capas del marco teórico y su papel dentro de la solución.</p></div>
+      <div class="theory-map">
+        <div class="theory-orbit"><div class="orbit-core">SISTEMA<br>CIBERFÍSICO</div><button class="theory-node node-back selected" data-theory="backend">BACKEND</button><button class="theory-node node-front" data-theory="frontend">FRONTEND</button><button class="theory-node node-ux" data-theory="ux">UI / UX</button><button class="theory-node node-async" data-theory="async">ASYNCIO</button></div>
+        <div class="theory-detail" id="theoryDetail"><span class="panel-kicker">CAPA DE SERVICIOS</span><h3>Backend</h3><p>Procesamiento, adquisición, persistencia y sincronización de la información que alimenta la interfaz de monitoreo.</p><div class="tags"><span>Python</span><span>SQLite</span><span>Supabase</span></div></div>
+      </div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>El marco teórico consolida los conceptos de backend, frontend con Streamlit, diseño UI/UX responsivo y la concurrencia de procesos en segundo plano.</p></aside>
+    </section>
+
+    <section class="slide" id="s15" data-title="Conclusiones y logros">
+      <div class="slide-head"><p class="eyebrow">14 / CIERRE TÉCNICO</p><h2>Del diseño a la integración.<br><em>Avances de la MR2.</em></h2><p class="lead">Selecciona cada logro para revisar qué demuestra y qué habilita en la siguiente etapa.</p></div>
+      <div class="conclusion-layout">
+        <div class="achievement-list"><button class="achievement selected" data-ach="0"><span>01</span><b>Integración física</b><small>Perfiles de aluminio y maqueta</small></button><button class="achievement" data-ach="1"><span>02</span><b>Comunicación multisensor</b><small>RS485 + I²C bajo AsyncIO</small></button><button class="achievement" data-ach="2"><span>03</span><b>Conectividad inicial</b><small>Persistencia local y Supabase</small></button></div>
+        <div class="achievement-detail" id="achievementDetail"><div class="achievement-check">✓</div><span class="panel-kicker">LOGRO 01</span><h3>Integración física</h3><p>Se materializa el soporte mecánico de la estación sobre perfiles de aluminio, base para la instrumentación del entorno de invernadero.</p><div class="next-step"><small>HABILITA</small><b>Montaje y validación en terreno</b></div></div>
+      </div>
+      <div class="closing-line">MR2 <span>→</span> CONSOLIDAR HARDWARE <span>→</span> VALIDAR EN TERRENO <span>→</span> EDGEAI</div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>En conclusión, hemos cumplido con éxito la integración física del hardware en perfiles de aluminio, la comunicación concurrencia de sensores vía RS485 e I2C bajo AsyncIO, y la conectividad inicial con Supabase.</p></aside>
+    </section>
+
+    <section class="slide" id="s16" data-title="Referencias y preguntas">
+      <div class="final-layout">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> 15 / CIERRE</p><h2>Muchas gracias<br><em>por su atención.</em></h2><p class="lead">La base técnica y científica del proyecto se recoge en las referencias bibliográficas del documento de tesis.</p><div class="question-card"><span>ESPACIO DE DISCUSIÓN</span><b>¿Preguntas o comentarios?</b><p>Estoy disponible para profundizar en las decisiones de diseño, integración y telemetría presentadas.</p></div></div>
+        <div class="references-card"><div class="references-head"><span>REFERENCIAS BIBLIOGRÁFICAS</span><small>DOCUMENTO DE TESIS</small></div><div class="reference-placeholder"><span>01</span><p>Incorpora aquí las referencias bibliográficas verificadas utilizadas en el documento final.</p></div><div class="reference-placeholder"><span>02</span><p>Prioriza documentación técnica de sensores, protocolos, plataformas y artículos científicos.</p></div><div class="reference-placeholder"><span>03</span><p>Completa autoría, año, título, publicación y DOI o URL cuando corresponda.</p></div><div class="refs-warning">Las referencias específicas no fueron incluidas en el texto base entregado; estos espacios son marcadores y deben sustituirse por la bibliografía real.</div></div>
+      </div>
+      <div class="end-mark"><span class="brand-mark">↗</span> PROYECTO DE TÍTULO · PUCV <span>·</span> MESA REDONDA 02</div>
+      <aside class="speaker"><b>QUÉ DECIR</b><p>Finalmente, presentamos las referencias técnicas y científicas que sustentan este desarrollo. Muchas gracias por su atención, quedo abierto a sus preguntas y comentarios.</p></aside>
+    </section>
+  </main>
+
+  <footer class="controls">
+    <div class="progress-wrap"><div class="progress-track"><span id="progressBar"></span></div><div class="progress-meta"><span id="slideNumber">01 / 16</span><span id="slideTitle">PORTADA</span></div></div>
+    <div class="nav-controls"><button class="nav-btn" id="prevBtn" aria-label="Diapositiva anterior">←</button><button class="nav-btn next" id="nextBtn" aria-label="Siguiente diapositiva">→</button></div>
+    <div class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> NAVEGAR <span>·</span> <kbd>F</kbd> PANTALLA COMPLETA</div>
+  </footer>
+  <div class="overview" id="overview" aria-hidden="true"><div class="overview-panel"><div class="overview-head"><div><span class="eyebrow">NAVEGACIÓN</span><h3>Índice de presentación</h3></div><button class="icon-btn" id="closeOverview">✕</button></div><div class="overview-grid" id="overviewGrid"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
